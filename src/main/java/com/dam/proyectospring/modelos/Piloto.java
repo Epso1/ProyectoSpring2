@@ -10,23 +10,25 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document("pilotos")
+@Document("pilots")
 public class Piloto implements Serializable {
     @Id
-    private String id;
+    @Field("_id")
+    private String _id;
     @Field("driver")
-    private String nombre;
+    private String driver;
     @Field("abbreviation")
-    private String abreviatura;
+    private String abbreviation;
     @Field("no")
-    private int numero;
+    private int no;
     @Field("team")
-    private String equipo;
+    private String team;
     @Field("country")
-    private String pais;
+    private String country;
     @Field("date_of_birth")
-    private LocalDate fechaNacimiento;
+    private LocalDate date_of_birth;
 }

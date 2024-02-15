@@ -8,29 +8,29 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+
+
 @Service
 public class PilotoServicioImpl implements PilotoServicio {
+    private final PilotoRepositorio pilotoRepositorio;
     @Autowired
-    private PilotoRepositorio pilotoRepositorio;
-
-
+    public PilotoServicioImpl(PilotoRepositorio pilotoRepositorio){
+        this.pilotoRepositorio = pilotoRepositorio;
+    }
     @Override
     public List<Piloto> findAllPilotos() {
         return pilotoRepositorio.findAll();
     }
-
     @Override
-    public Optional<Piloto> getPilotoById(String id) {
-        return pilotoRepositorio.findPilotoById(id);
+    public Optional<Piloto> findById(String id) {
+        return pilotoRepositorio.findById(id);
     }
-
     @Override
-    public void savePiloto(Piloto piloto) {
-        pilotoRepositorio.save(piloto);
+    public Piloto savePilot(Piloto pilot) {
+        return pilotoRepositorio.save(pilot);
     }
-
     @Override
-    public void deletePilotoById(String id) {
-        pilotoRepositorio.deleteById(id);
+    public void removePilotById(String id) {
+        pilotoRepositorio.delete(pilotoRepositorio.findPilotoBy_id(id).get());
     }
 }
